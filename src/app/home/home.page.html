@@ -1,20 +1,15 @@
 <!---->
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title color="primary" class="ion-text-center">
       Inicio
     </ion-title>
-    <ion-button href="login" class="ion-float-right">Login</ion-button>
+    <ion-button [routerLink]="['/login']" class="ion-float-right">Login</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
-  <div></div>
-
-  <div id="container">
-    <ion-img src="assets/image/hello_there.gif" alt="Hello There"></ion-img>
-    <!--<p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>-->
-  </div>
+  <ion-card>
+    <img alt="Silhouette of mountains" src="assets/image/hello_there.gif" />
+  </ion-card>
 </ion-content>

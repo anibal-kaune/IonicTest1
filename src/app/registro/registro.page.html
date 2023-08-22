@@ -1,13 +1,22 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registro</ion-title>
+  <ion-toolbar color="warning">
+    <ion-title></ion-title>
+    <ion-back-button slot="start" defaultHref="login"></ion-back-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1 class="ion-text-center">Regístrate</h1>
+  <form> 
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input fill="outline" placeholder="Nombre" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input fill="outline" placeholder="Contraseña" class="ion-padding"></ion-input>
+    </ion-item>
+    <br/>
+    <ion-button expand="block" color="success" class="ion-padding-top">Registrar</ion-button>
+  </form>
 </ion-content>
