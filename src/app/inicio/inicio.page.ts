@@ -1,21 +1,33 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AlertController, NavController, Animation, AnimationController  } from '@ionic/angular';
+import { AlertController, NavController, AnimationController, IonTitle  } from '@ionic/angular';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { AppComponent } from '../app.component';
-
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { NgModule } from '@angular/core';
 
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   styleUrls: ['./inicio.page.scss'],
+  
 })
+
 export class InicioPage /*implements AfterViewInit*/ {
   /*anim: Animation;
   @ViewChild('square', { read:ElementRef, static: false }) square: ElementRef;*/
+  @ViewChild(IonTitle, { read: ElementRef }) title!: ElementRef<HTMLIonTitleElement>;
 
   formularioInicio: FormGroup;
+  private animation: Animation;
 
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
@@ -27,6 +39,7 @@ export class InicioPage /*implements AfterViewInit*/ {
         'nivEdu': new FormControl("", Validators.required),
         'fecha': new FormControl("", Validators.required)
       });
+      this.animation = this.animationCtrl.create();
       }
 
 
@@ -35,16 +48,22 @@ export class InicioPage /*implements AfterViewInit*/ {
   ngOnInit() {
   }
 
-  /*ngAfterViewInit() {
-    const animation:  Animation = this.animationCtrl.create()
+  @NgModule({
+    declarations: [AppComponent],
+    imports: [MatDatepickerModule],
+  })
+
+  ngAfterViewInit() {
+    this.animation = this.animationCtrl
+        .create()
         .addElement(this.title.nativeElement)
-        .duration(1500)
+        .duration(2500)
         .iterations(Infinity)
-        .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+        .fromTo('transform', 'translateX(0px)', 'translateX(155px)')
         .fromTo('opacity', '1', '0.2');
     
-        animation.play();
-  }*/
+        this.animation.play();
+  }
 
   async guardar(){
     var f = this.formularioInicio.value;
@@ -70,6 +89,7 @@ export class InicioPage /*implements AfterViewInit*/ {
 
     const elemento = localStorage.getItem('cli');
     const user = localStorage.getItem('usuario');
+
     //const userList = JSON.parse(user);
 /*
     if (elemento) {
@@ -92,7 +112,25 @@ export class InicioPage /*implements AfterViewInit*/ {
     }
   }
 
+  limpiar () {
+
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('apellido');
+    localStorage.removeItem('nivEdu');
+    localStorage.removeItem('fecha');
+    const nom = document.getElementById("nom") as HTMLInputElement;
+    const ape = document.getElementById("ape") as HTMLInputElement;
+    const edu = document.getElementById("edu") as HTMLSelectElement;
+    const fech = document.getElementById("fech") as HTMLSelectElement;
+
+    nom.value="";
+    ape.value="";
+    edu.value="";
+    fech.value="";
+  }
+
   //Animaciones
 
-
 }
+
+
