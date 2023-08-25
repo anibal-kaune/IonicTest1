@@ -9,6 +9,32 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1 class="ion-text-center">Hola</h1>
+  <h1 #titulo class="square; ion-text-center">Completa tus datos</h1>
+  <!--
   <ion-img src="assets/image/dance1.gif" alt="Dancing" class="ion-padding-top"></ion-img>
+  -->
+  <form [formGroup]="formularioInicio" (keyup.enter)="guardar()"> 
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre" fill="outline" placeholder="Nombre" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input formControlName="apellido" fill="outline" placeholder="Apellido" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nivel educacional</ion-label>
+      <ion-select formControlName="nivEdu" placeholder="Nivel educacional">
+        <ion-select-option value="Basica">Basica</ion-select-option>
+        <ion-select-option value="Media">Media</ion-select-option>
+        <ion-select-option value="Superior">Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="ion-padding-bottom">Fecha de nacimiento</ion-label>
+      <br>
+      <ion-datetime formControlName="fecha" class="ion-padding-top"></ion-datetime>
+    </ion-item>
+    <ion-button (click)="guardar()" expand="block" color="success" class="ion-padding-top">Registrar</ion-button>
+  </form>
 </ion-content>
