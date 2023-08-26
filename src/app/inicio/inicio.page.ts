@@ -5,18 +5,19 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { AppComponent } from '../app.component';
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
+
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
-import { NgModule } from '@angular/core';
+
 
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
-  standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
+  //standalone: true,
+  //imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   styleUrls: ['./inicio.page.scss'],
   
 })
@@ -48,10 +49,7 @@ export class InicioPage /*implements AfterViewInit*/ {
   ngOnInit() {
   }
 
-  @NgModule({
-    declarations: [AppComponent],
-    imports: [MatDatepickerModule],
-  })
+
 
   ngAfterViewInit() {
     this.animation = this.animationCtrl
