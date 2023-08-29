@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AlertController, NavController} from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
