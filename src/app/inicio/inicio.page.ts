@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AlertController, NavController, AnimationController, IonTitle  } from '@ionic/angular';
+import { AlertController, NavController, AnimationController, IonTitle, IonItem, IonInput  } from '@ionic/angular';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { AppComponent } from '../app.component';
 import type { QueryList } from '@angular/core';
@@ -19,6 +19,20 @@ import {MatNativeDateModule} from '@angular/material/core';
   //standalone: true,
   //imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   styleUrls: ['./inicio.page.scss'],
+  animations: [
+    trigger('inputAnimation', [
+      state('inactive', style({
+        backgroundColor: 'transparent',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#E0E0E0',
+        transform: 'scale(1.05)'
+      })),
+      transition('inactive => active', animate('300ms ease-in')),
+      transition('active => inactive', animate('300ms ease-out'))
+    ])
+  ]
   
 })
 
@@ -26,9 +40,14 @@ export class InicioPage /*implements AfterViewInit*/ {
   /*anim: Animation;
   @ViewChild('square', { read:ElementRef, static: false }) square: ElementRef;*/
   @ViewChild(IonTitle, { read: ElementRef }) title!: ElementRef<HTMLIonTitleElement>;
+  @ViewChild(IonInput, { read: ElementRef }) input!: ElementRef<HTMLIonInputElement>;
+  inputState = 'inactive';
+
+  //selectedDate: Date;
 
   formularioInicio: FormGroup;
   private animation: Animation;
+  private anim: Animation;
 
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
@@ -41,6 +60,7 @@ export class InicioPage /*implements AfterViewInit*/ {
         'fecha': new FormControl("", Validators.required)
       });
       this.animation = this.animationCtrl.create();
+      this.anim = this.animationCtrl.create();
       }
 
 
@@ -125,6 +145,19 @@ export class InicioPage /*implements AfterViewInit*/ {
     ape.value="";
     edu.value="";
     fech.value="";
+    
+    /*
+    this.anim = this.animationCtrl
+        .create()
+        .addElement(this.input.nativeElement)
+        .duration(1000)
+        .iterations(1)
+        .fromTo('transform', 'translateX(0px)', 'translateX(155px)')
+        .fromTo('opacity', '1', '0.2');
+    */
+
+    this.inputState = (this.inputState === 'inactive') ? 'active' : 'inactive';
+
   }
 
   //Animaciones

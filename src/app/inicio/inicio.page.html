@@ -16,11 +16,11 @@
   <form [formGroup]="formularioInicio" (keyup.enter)="guardar()"> 
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input id="nom" formControlName="nombre" fill="outline" placeholder="Nombre" class="ion-padding"></ion-input>
+      <ion-input id="nom" [@inputAnimation]="inputState" formControlName="nombre" fill="outline" placeholder="Nombre" class="ion-padding"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item #input>
       <ion-label position="floating">Apellido</ion-label>
-      <ion-input id="ape" formControlName="apellido" fill="outline" placeholder="Apellido" class="ion-padding"></ion-input>
+      <ion-input id="ape" [@inputAnimation]="inputState" formControlName="apellido" fill="outline" placeholder="Apellido" class="ion-padding"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel educacional</ion-label>
@@ -37,11 +37,10 @@
     </ion-item>
     <!--<ion-item>
       <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" id="fech">
+        <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
       </mat-form-field>
     </ion-item>-->
     <ion-row>
