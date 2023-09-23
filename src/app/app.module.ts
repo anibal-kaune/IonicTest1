@@ -7,9 +7,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DatosComponent } from './datos/datos.component';
+import { CertificacionComponent } from './certificacion/certificacion.component';
+import { ExperienciaComponent } from './experiencia/experiencia.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DatosComponent, CertificacionComponent, ExperienciaComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

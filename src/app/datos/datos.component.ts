@@ -1,58 +1,16 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import 'ionicons';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AlertController, NavController, AnimationController, IonTitle, IonItem, IonInput  } from '@ionic/angular';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { AppComponent } from '../app.component';
-import type { QueryList } from '@angular/core';
-import type { Animation } from '@ionic/angular';
-
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
-
-
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.page.html',
-  //standalone: true,
-  //imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
-  styleUrls: ['./inicio.page.scss'],
-  animations: [
-    trigger('inputAnimation', [
-      state('inactive', style({
-        backgroundColor: 'transparent',
-        transform: 'scale(1)'
-      })),
-      state('active',   style({
-        backgroundColor: '#E0E0E0',
-        transform: 'scale(1.05)'
-      })),
-      transition('inactive => active', animate('300ms ease-in')),
-      transition('active => inactive', animate('300ms ease-out'))
-    ])
-  ]
-  
+  selector: 'app-datos',
+  templateUrl: './datos.component.html',
+  styleUrls: ['./datos.component.scss'],
 })
-
-export class InicioPage /*implements AfterViewInit*/ {
-  /*anim: Animation;
-  @ViewChild('square', { read:ElementRef, static: false }) square: ElementRef;*/
-  @ViewChild(IonTitle, { read: ElementRef }) title!: ElementRef<HTMLIonTitleElement>;
-  @ViewChild(IonInput, { read: ElementRef }) input!: ElementRef<HTMLIonInputElement>;
-  inputState = 'inactive';
-
-  //selectedDate: Date;
-
+export class DatosComponent  implements OnInit {
   formularioInicio: FormGroup;
-  private animation: Animation;
-  private anim: Animation;
-
-  segmentValue: string = 'datos';
-  segmentChanged(){
-
-  }
 
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
@@ -64,29 +22,9 @@ export class InicioPage /*implements AfterViewInit*/ {
         'nivEdu': new FormControl("", Validators.required),
         'fecha': new FormControl("", Validators.required)
       });
-      this.animation = this.animationCtrl.create();
-      this.anim = this.animationCtrl.create();
-      }
+    }
 
-
-
-
-  ngOnInit() {
-  }
-
-
-
-  ngAfterViewInit() {
-    this.animation = this.animationCtrl
-        .create()
-        .addElement(this.title.nativeElement)
-        .duration(2500)
-        .iterations(Infinity)
-        .fromTo('transform', 'translateX(0px)', 'translateX(155px)')
-        .fromTo('opacity', '1', '0.2');
-    
-        this.animation.play();
-  }
+  ngOnInit() {}
 
   async guardar(){
     var f = this.formularioInicio.value;
@@ -161,12 +99,9 @@ export class InicioPage /*implements AfterViewInit*/ {
         .fromTo('opacity', '1', '0.2');
     */
 
-    this.inputState = (this.inputState === 'inactive') ? 'active' : 'inactive';
+    //this.inputState = (this.inputState === 'inactive') ? 'active' : 'inactive';
 
   }
 
-  //Animaciones
 
 }
-
-

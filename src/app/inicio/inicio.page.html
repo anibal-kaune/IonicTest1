@@ -49,4 +49,16 @@
     </ion-row>
     
   </form>
+
+  <ion-segment [(ngModel)]="segmentValue" (ionChange)="segmentChanged()">
+    <ion-segment-button value="experiencia">
+      Opción 1
+    </ion-segment-button>
+    <ion-segment-button value="certificacion">
+      Opción 2
+    </ion-segment-button>
+    <ion-segment-button value="datos">
+      Opción 3
+    </ion-segment-button>
+  </ion-segment>
 </ion-content>
