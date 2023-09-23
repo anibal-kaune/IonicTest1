@@ -1,3 +1,36 @@
-<p>
-  experiencia works!
-</p>
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center">Experiencia laboral</h1>
+  <!--
+  <ion-img src="assets/image/dance1.gif" alt="Dancing" class="ion-padding-top"></ion-img>
+  -->
+  <form> 
+    <ion-item>
+      <ion-label position="floating">Empresa</ion-label>
+      <ion-input id="emp" formControlName="empresa" fill="outline" placeholder="Empresa" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item #input>
+      <ion-label position="floating">Año inicio</ion-label>
+      <ion-input id="ini" formControlName="anoIni" fill="outline" placeholder="Año inicio" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Sigue trabajando ahí?</ion-label>
+      <ion-select id="sig" formControlName="sigTrab" placeholder="¿Sigue trabajando ahí?">
+        <ion-select-option value="Basica">Si</ion-select-option>
+        <ion-select-option value="Media">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item #input>
+      <ion-label position="floating">Año término (si ya no está trabajando ahí)</ion-label>
+      <ion-input id="ter" formControlName="anoTer" fill="outline" placeholder="Año término" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item #input>
+      <ion-label position="floating">Cargo</ion-label>
+      <ion-input id="cargo" formControlName="cargo" fill="outline" placeholder="Cargo" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-button expand="block" color="success" class="ion-padding-top">Registrar</ion-button>
+      <ion-button expand="block" color="success" class="ion-padding-top">Limpiar</ion-button>
+    </ion-row>
+    
+  </form>
+</ion-content>

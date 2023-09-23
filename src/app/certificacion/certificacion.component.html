@@ -1,3 +1,35 @@
-<p>
-  certificacion works!
-</p>
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center">Certificaciones</h1>
+  <!--
+  <ion-img src="assets/image/dance1.gif" alt="Dancing" class="ion-padding-top"></ion-img>
+  -->
+  <form> 
+    <ion-item>
+      <ion-label position="floating">Nombre Certificado</ion-label>
+      <ion-input id="nomCer" formControlName="nombreCer" fill="outline" placeholder="Nombre Certificado" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="ion-padding-bottom">Fecha de obtención</ion-label>
+      <br>
+      <ion-datetime id="fechOb" formControlName="fechaOb" class="ion-padding-top"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">¿Tiene fecha de vencimiento?</ion-label>
+      <ion-select id="feVen" formControlName="fechaVen" placeholder="¿Tiene fecha de vencimiento?">
+        <ion-select-option value="Basica">Si</ion-select-option>
+        <ion-select-option value="Media">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="ion-padding-bottom">Fecha de vencimiento</ion-label>
+      <br>
+      <ion-datetime id="fechVen" formControlName="fechaVenci" class="ion-padding-top"></ion-datetime>
+    </ion-item>
+    <ion-row>
+      <ion-button expand="block" color="success" class="ion-padding-top">Registrar</ion-button>
+      <ion-button expand="block" color="success" class="ion-padding-top">Limpiar</ion-button>
+    </ion-row>
+    
+  </form>
+</ion-content>
+

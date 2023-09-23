@@ -1,10 +1,42 @@
-<p>
-  datos works!
-</p>
-<h1>hello there</h1>
-<button>hello there</button>
-<ion-card>
-  <ion-card-header>
-    <h1>Hello there</h1>
-  </ion-card-header>
-</ion-card>
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center">Mis datos</h1>
+  <!--
+  <ion-img src="assets/image/dance1.gif" alt="Dancing" class="ion-padding-top"></ion-img>
+  -->
+  <form [formGroup]="formularioDatos" (keyup.enter)="guardar()"> 
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input id="nom" [@inputAnimation]="inputState" formControlName="nombre" fill="outline" placeholder="Nombre" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item #input>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input id="ape" [@inputAnimation]="inputState" formControlName="apellido" fill="outline" placeholder="Apellido" class="ion-padding"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nivel educacional</ion-label>
+      <ion-select id="edu" formControlName="nivEdu" placeholder="Nivel educacional">
+        <ion-select-option value="Basica">Basica</ion-select-option>
+        <ion-select-option value="Media">Media</ion-select-option>
+        <ion-select-option value="Superior">Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="ion-padding-bottom">Fecha de nacimiento</ion-label>
+      <br>
+      <ion-datetime id="fech" formControlName="fecha" class="ion-padding-top"></ion-datetime>
+    </ion-item>
+    <!--<ion-item>
+      <mat-form-field>
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" id="fech">
+        <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field>
+    </ion-item>-->
+    <ion-row>
+      <ion-button (click)="guardar()" expand="block" color="success" class="ion-padding-top">Registrar</ion-button>
+      <ion-button (click)="limpiar()" expand="block" color="success" class="ion-padding-top">Limpiar</ion-button>
+    </ion-row>
+    
+  </form>
+</ion-content>

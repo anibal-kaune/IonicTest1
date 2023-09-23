@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import 'ionicons';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AlertController, NavController, AnimationController, IonTitle, IonItem, IonInput  } from '@ionic/angular';
 
 @Component({
@@ -10,13 +11,14 @@ import { AlertController, NavController, AnimationController, IonTitle, IonItem,
   styleUrls: ['./datos.component.scss'],
 })
 export class DatosComponent  implements OnInit {
-  formularioInicio: FormGroup;
+  formularioDatos: FormGroup;
+  inputState: any;
 
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController, 
     private animationCtrl: AnimationController) { 
-      this.formularioInicio = this.fb.group({
+      this.formularioDatos = this.fb.group({
         'nombre': new FormControl("", Validators.required),
         'apellido': new FormControl("", Validators.required),
         'nivEdu': new FormControl("", Validators.required),
@@ -27,9 +29,9 @@ export class DatosComponent  implements OnInit {
   ngOnInit() {}
 
   async guardar(){
-    var f = this.formularioInicio.value;
+    var f = this.formularioDatos.value;
 
-    if(this.formularioInicio.invalid){
+    if(this.formularioDatos.invalid){
       const alert = await this.alertController.create({
         header: 'Campos incompletos',
         message: 'Debes llenar todos los campos.',
@@ -59,7 +61,7 @@ export class DatosComponent  implements OnInit {
       console.log('Elemento no encontrado en localStorage.');
     }*/
 
-    if(this.formularioInicio.valid, elemento){
+    if(this.formularioDatos.valid, elemento){
       const lista = JSON.parse(elemento);
 
       const alert = await this.alertController.create({
@@ -99,7 +101,7 @@ export class DatosComponent  implements OnInit {
         .fromTo('opacity', '1', '0.2');
     */
 
-    //this.inputState = (this.inputState === 'inactive') ? 'active' : 'inactive';
+    this.inputState = (this.inputState === 'inactive') ? 'active' : 'inactive';
 
   }
 
